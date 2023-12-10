@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
-import static com.lazo.saos.utils.LazoUtils.createListx;
-import static com.lazo.saos.utils.LazoUtils.getRv;
-
 /**
  * Created by Lazo on 2023-07-16
  */
