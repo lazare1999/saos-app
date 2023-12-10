@@ -25,7 +25,13 @@ public class MainServiceImpl implements MainService {
         for (var a : ans) {
             double row = 1.0;
             for (var aa : a.entrySet()) {
-                var b = rValues.get(aa.getKey());
+                var b =rValues.get(aa.getKey());
+
+                if(Objects.equals(b, null) || Objects.equals(b, 0.0)) {
+                    intAns = 1.0;
+                    break;
+                }
+
                 if (!aa.getValue())
                     row = row * (1-b);
                 else

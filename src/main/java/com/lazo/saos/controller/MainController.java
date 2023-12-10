@@ -24,7 +24,7 @@ public class MainController {
     private final MainService service;
 
 
-    @PostMapping("/compute_success_rate")
+    @GetMapping("/compute_success_rate")
     protected ResponseEntity<Double> computeButton(@RequestBody Matrix matrix) {
 
         if (Objects.equals(matrix.getMatrix(), null) || Objects.equals(matrix.getRv(), null))
@@ -35,7 +35,7 @@ public class MainController {
 
     }
 
-    @PostMapping("/print_matrix")
+    @GetMapping("/print_matrix")
     protected ResponseEntity<Matrix> printMatrix(@RequestBody Matrix matrix) {
 
         if (Objects.equals(matrix.getMatrix(), null))
@@ -45,7 +45,7 @@ public class MainController {
         return ResponseEntity.ok(new Matrix(algAns));
     }
 
-    @PostMapping("/calculate_weights")
+    @GetMapping("/calculate_weights")
     protected ResponseEntity<Double>  calculateWeights(@RequestBody Matrix matrix, @RequestParam(value = "index") Integer index) {
 
         if (Objects.equals(matrix.getMatrix(), null) || index ==null)
