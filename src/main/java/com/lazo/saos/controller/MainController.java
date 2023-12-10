@@ -15,13 +15,14 @@ import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class MainController {
 
 
     private final MainService service;
 
 
-    @GetMapping("/compute_success_rate")
+    @PostMapping("/compute_success_rate")
     protected ResponseEntity<Double> computeButton(@RequestBody Matrix matrix) {
 
         if (Objects.equals(matrix.getMatrix(), null) || Objects.equals(matrix.getRv(), null))
@@ -32,7 +33,7 @@ public class MainController {
 
     }
 
-    @GetMapping("/print_matrix")
+    @PostMapping("/print_matrix")
     protected ResponseEntity<Matrix> printMatrix(@RequestBody Matrix matrix) {
 
         if (Objects.equals(matrix.getMatrix(), null))
@@ -42,7 +43,7 @@ public class MainController {
         return ResponseEntity.ok(new Matrix(algAns));
     }
 
-    @GetMapping("/calculate_weights")
+    @PostMapping("/calculate_weights")
     protected ResponseEntity<Double>  calculateWeights(@RequestBody Matrix matrix, @RequestParam(value = "index") Integer index) {
 
         if (Objects.equals(matrix.getMatrix(), null) || index ==null)
