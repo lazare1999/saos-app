@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Running Java ${{ matrix.java }} compile
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -35,7 +35,7 @@ jobs:
     name: Running tests
     needs: compile
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -48,7 +48,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -66,7 +66,7 @@ jobs:
     name: Deploy the JAR file to the remote server
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -88,7 +88,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            sudo su - && cd /opt/saos_server/ && sudo docker stop $(sudo docker ps | grep "saos-server:latest" | cut -d " " -f 1) && docker-compose up
+            cd /opt/saos_server/ && docker-compose down && docker-compose up --build
           host: ${{ secrets.HOST }}
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
