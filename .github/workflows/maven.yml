@@ -86,7 +86,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            cd /opt/saos_server/ && docker-compose down && docker-compose up --build
+            cd /opt/saos_server/ && docker-compose down && docker-compose up --build &
           host: ${{ secrets.HOST }}
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
