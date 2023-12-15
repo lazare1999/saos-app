@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lazo</groupId>
-	<artifactId>saosApp</artifactId>
+	<artifactId>saos_app</artifactId>
 	<version>0.0.2</version>
 	<name>saosApp</name>
 	<description>Saos rest API</description>
@@ -18,23 +18,31 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<exclusions>
+				<exclusion>
+					<artifactId>snakeyaml</artifactId>
+					<groupId>org.yaml</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>2.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.2.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -45,8 +53,24 @@
 			<artifactId>swagger-annotations-jakarta</artifactId>
 			<version>2.2.19</version>
 		</dependency>
-
-	</dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.3.1</version>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

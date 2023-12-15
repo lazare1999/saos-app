@@ -1,4 +1,4 @@
-package com.lazo.saos.service;
+package com.lazo.saos.app.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 import static com.lazo.saos.utils.LazoUtils.invertHashMap;
-import static com.lazo.saos.utils.OrtAlgorithmHelper.calculateLogicalAnds;
+import static com.lazo.saos.app.helper.OrtAlgorithmHelper.calculateLogicalAnds;
 import static java.lang.Math.pow;
 
 /**
@@ -17,9 +17,9 @@ import static java.lang.Math.pow;
 @RequiredArgsConstructor
 public class MainServiceImpl implements MainService {
 
-    public Double ortAlgorithm_compute(ArrayList<HashMap<Integer, Boolean>> listX, HashMap<Integer, Double> rValues) {
+    public Double ortAlgorithmCompute(ArrayList<HashMap<Integer, Boolean>> listX, HashMap<Integer, Double> rValues) {
 
-        ArrayList<HashMap<Integer, Boolean>> ans = ortAlgorithm_y(listX);
+        ArrayList<HashMap<Integer, Boolean>> ans = ortAlgorithmY(listX);
 
         double intAns = 1.0;
         for (var a : ans) {
@@ -45,7 +45,7 @@ public class MainServiceImpl implements MainService {
         return intAns;
     }
 
-    public ArrayList<HashMap<Integer, Boolean>> ortAlgorithm_y(ArrayList<HashMap<Integer, Boolean>> listX) {
+    public ArrayList<HashMap<Integer, Boolean>> ortAlgorithmY(ArrayList<HashMap<Integer, Boolean>> listX) {
         listX.sort(Comparator.comparing(a -> Collections.min(a.keySet())));
         listX.sort(Comparator.comparing(HashMap::size));
 
