@@ -19,7 +19,7 @@ import java.util.Objects;
 public class MainController {
 
 
-    private final MainService service;
+    private final MainService mainService;
 
 
     @PostMapping("/compute_success_rate")
@@ -28,7 +28,7 @@ public class MainController {
         if (Objects.equals(matrix.getMatrix(), null) || Objects.equals(matrix.getRv(), null))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        var ans = service.ortAlgorithmCompute(matrix.getMatrix(), matrix.getRv());
+        var ans = mainService.ortAlgorithmCompute(matrix.getMatrix(), matrix.getRv());
         return ResponseEntity.ok(ans);
 
     }
@@ -39,7 +39,7 @@ public class MainController {
         if (Objects.equals(matrix.getMatrix(), null))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        var algAns = service.ortAlgorithmY(matrix.getMatrix());
+        var algAns = mainService.ortAlgorithmY(matrix.getMatrix());
         return ResponseEntity.ok(new Matrix(algAns));
     }
 
@@ -49,7 +49,7 @@ public class MainController {
         if (Objects.equals(matrix.getMatrix(), null) || index ==null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        var ans = service.calculateWeight(service.ortAlgorithmY(matrix.getMatrix()), index);
+        var ans = mainService.calculateWeight(mainService.ortAlgorithmY(matrix.getMatrix()), index);
         return ResponseEntity.ok(ans);
     }
 
