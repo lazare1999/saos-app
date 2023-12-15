@@ -1,7 +1,7 @@
-package com.lazo.saos.controller;
+package com.lazo.saos.app.controller;
 
-import com.lazo.saos.domain.Matrix;
-import com.lazo.saos.service.MainService;
+import com.lazo.saos.app.service.MainService;
+import com.lazo.saos.app.model.Matrix;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +23,12 @@ public class MainController {
 
 
     @PostMapping("/compute_success_rate")
-    protected ResponseEntity<Double> computeButton(@RequestBody Matrix matrix) {
+    protected ResponseEntity<Double> computeSuccessRate(@RequestBody Matrix matrix) {
 
         if (Objects.equals(matrix.getMatrix(), null) || Objects.equals(matrix.getRv(), null))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        var ans = service.ortAlgorithm_compute(matrix.getMatrix(), matrix.getRv());
+        var ans = service.ortAlgorithmCompute(matrix.getMatrix(), matrix.getRv());
         return ResponseEntity.ok(ans);
 
     }
@@ -39,7 +39,7 @@ public class MainController {
         if (Objects.equals(matrix.getMatrix(), null))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        var algAns = service.ortAlgorithm_y(matrix.getMatrix());
+        var algAns = service.ortAlgorithmY(matrix.getMatrix());
         return ResponseEntity.ok(new Matrix(algAns));
     }
 
@@ -49,7 +49,7 @@ public class MainController {
         if (Objects.equals(matrix.getMatrix(), null) || index ==null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        var ans = service.calculateWeight(service.ortAlgorithm_y(matrix.getMatrix()), index);
+        var ans = service.calculateWeight(service.ortAlgorithmY(matrix.getMatrix()), index);
         return ResponseEntity.ok(ans);
     }
 

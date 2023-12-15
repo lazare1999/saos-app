@@ -1,4 +1,4 @@
-package com.lazo.saos.domain;
+package com.lazo.saos.app.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
