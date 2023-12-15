@@ -23,7 +23,7 @@ public class MainController {
 
 
     @PostMapping("/compute_success_rate")
-    protected ResponseEntity<Double> computeSuccessRate(@RequestBody Matrix matrix) {
+    public ResponseEntity<Double> computeSuccessRate(@RequestBody Matrix matrix) {
 
         if (Objects.equals(matrix.getMatrix(), null) || Objects.equals(matrix.getRv(), null))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -34,7 +34,7 @@ public class MainController {
     }
 
     @PostMapping("/print_matrix")
-    protected ResponseEntity<Matrix> printMatrix(@RequestBody Matrix matrix) {
+    public ResponseEntity<Matrix> printMatrix(@RequestBody Matrix matrix) {
 
         if (Objects.equals(matrix.getMatrix(), null))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -44,7 +44,7 @@ public class MainController {
     }
 
     @PostMapping("/calculate_weights")
-    protected ResponseEntity<Double>  calculateWeights(@RequestBody Matrix matrix, @RequestParam(value = "index") Integer index) {
+    public ResponseEntity<Double>  calculateWeights(@RequestBody Matrix matrix, @RequestParam(value = "index") Integer index) {
 
         if (Objects.equals(matrix.getMatrix(), null) || index ==null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

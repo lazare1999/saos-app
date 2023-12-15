@@ -8,6 +8,7 @@ import java.util.HashMap;
  */
 
 public interface MainService {
+
     Double ortAlgorithmCompute(ArrayList<HashMap<Integer, Boolean>> listX, HashMap<Integer, Double> rValues);
 
     ArrayList<HashMap<Integer, Boolean>> ortAlgorithmY(ArrayList<HashMap<Integer, Boolean>> listX);
