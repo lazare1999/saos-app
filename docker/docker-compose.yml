@@ -1,0 +1,11 @@
+version: '2'
+services:
+    saos-swagger:
+        container_name: saos-server
+        restart: 'always'
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: saos-server:latest
+        ports:
+            - 8080:8080
