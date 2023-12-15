@@ -73,11 +73,19 @@ jobs:
           cache: maven
       - name: Generate the package
         run: mvn -B package --file pom.xml -Dmaven.test.skip=true
+      - name: Deploy the docker files to the remote server
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: docker
+          remote: /opt/saos_server/docker-compose.yml
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
       - name: Deploy the package to the remote server
         uses: garygrossgarten/github-action-scp@release
         with:
           local: target/saosApp-0.0.2.jar
-          remote: /opt/saos_server/saosApp/saosApp-0.0.2.jar # My remote directory
+          remote: /opt/saos_server/saosApp-0.0.2.jar
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
