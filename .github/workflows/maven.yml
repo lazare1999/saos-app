@@ -73,18 +73,10 @@ jobs:
           cache: maven
       - name: Generate the package
         run: mvn -B package --file pom.xml -Dmaven.test.skip=true
-      - name: Deploy the Dockerfile to the remote server
+      - name: Deploy the docker files to the remote server
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: docker/Dockerfile
-          remote: /opt/saos_server/Dockerfile
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-      - name: Deploy the docker-compose.yml to the remote server
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: docker/docker-compose.yml
+          local: docker
           remote: /opt/saos_server/docker-compose.yml
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
