@@ -92,8 +92,8 @@ jobs:
       - name: Deploy the package to the remote server
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: target/0.0.3.jar
-          remote: /opt/saos_server/0.0.3.jar
+          local: target/saos_app-0.0.3.jar
+          remote: /opt/saos_server/saos_app-0.0.3.jar
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
