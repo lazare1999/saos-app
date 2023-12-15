@@ -29,7 +29,7 @@ public class SaosServiceIntegrationTest extends TestUtils {
 
     @Test
     public void testOrtAlgorithmCompute() throws IOException, ParseException {
-        var o = getJSONObject("src/main/resources/text.json");
+        var o = getJSONObject();
 
         var rvLocal = (HashMap<String, Double>) o.get("rv");
         var matrixLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
@@ -43,8 +43,9 @@ public class SaosServiceIntegrationTest extends TestUtils {
 
     @Test
     public void testOrtAlgorithmY() throws IOException, ParseException {
-        var o = getJSONObject("src/main/resources/text.json");
+        var o = getJSONObject();
 
+        @SuppressWarnings("unchecked")
         var listXLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
         var listX = getConvertedList(listXLocal);
 
@@ -54,8 +55,9 @@ public class SaosServiceIntegrationTest extends TestUtils {
 
     @Test
     public void testCalculateWeight() throws IOException, ParseException {
-        var o = getJSONObject("src/main/resources/text.json");
+        var o = getJSONObject();
 
+        @SuppressWarnings("unchecked")
         var yLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
         var y = getConvertedList(yLocal);
 

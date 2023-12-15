@@ -40,9 +40,11 @@ public class SaosControllerIntegrationTest extends TestUtils {
     @Test
     public void testComputeSuccessRateWhenMatrixIsNotEmpty() throws IOException, ParseException {
 
-        var o = getJSONObject("src/main/resources/text.json");
+        var o = getJSONObject();
 
+        @SuppressWarnings("unchecked")
         var rvLocal = (HashMap<String, Double>) o.get("rv");
+        @SuppressWarnings("unchecked")
         var matrixLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
         var matrix = getMatrix(matrixLocal, rvLocal);
 
@@ -67,8 +69,9 @@ public class SaosControllerIntegrationTest extends TestUtils {
 
     @Test
     public void testPrintMatrixWhenMatrixIsNotEmpty() throws IOException, ParseException {
-        var o = getJSONObject("src/main/resources/text.json");
+        var o = getJSONObject();
 
+        @SuppressWarnings("unchecked")
         var matrixLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
         var matrix = getMatrix(matrixLocal, new HashMap<>());
 
@@ -94,8 +97,9 @@ public class SaosControllerIntegrationTest extends TestUtils {
 
     @Test
     public void testCalculateWeightsMatrixIsNotEmptyAndIndexNull() throws IOException, ParseException {
-        var o = getJSONObject("src/main/resources/text.json");
+        var o = getJSONObject();
 
+        @SuppressWarnings("unchecked")
         var matrixLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
         var matrix = getMatrix(matrixLocal, new HashMap<>());
 
@@ -108,8 +112,9 @@ public class SaosControllerIntegrationTest extends TestUtils {
 
     @Test
     public void testCalculateWeightsMatrixIsNotEmptyAndIndexNotNull() throws IOException, ParseException {
-        var o = getJSONObject("src/main/resources/text.json");
+        var o = getJSONObject();
 
+        @SuppressWarnings("unchecked")
         var matrixLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
         var matrix = getMatrix(matrixLocal, new HashMap<>());
 

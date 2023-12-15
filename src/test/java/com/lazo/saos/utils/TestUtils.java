@@ -47,9 +47,9 @@ public class TestUtils {
         return convertedList;
     }
 
-    protected static JSONObject getJSONObject(String pathToFile) throws IOException, ParseException {
+    protected static JSONObject getJSONObject() throws IOException, ParseException {
         var jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader(pathToFile)) {
+        try (FileReader reader = new FileReader("src/main/resources/text.json")) {
             var obj = jsonParser.parse(reader);
             if (Objects.isNull(obj))
                 return new JSONObject();
