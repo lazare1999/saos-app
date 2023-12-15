@@ -36,10 +36,6 @@ public class SaosControllerUnitTest {
     @MockBean
     private MainServiceImpl mainServiceImpl;
 
-    @InjectMocks
-    private MainController mainController;
-
-
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
 

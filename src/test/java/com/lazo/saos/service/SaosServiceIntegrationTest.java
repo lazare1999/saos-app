@@ -31,7 +31,9 @@ public class SaosServiceIntegrationTest extends TestUtils {
     public void testOrtAlgorithmCompute() throws IOException, ParseException {
         var o = getJSONObject();
 
+        @SuppressWarnings("unchecked")
         var rvLocal = (HashMap<String, Double>) o.get("rv");
+        @SuppressWarnings("unchecked")
         var matrixLocal = (ArrayList<HashMap<String, Boolean>>) o.get("matrix");
         var matrix = getMatrix(matrixLocal, rvLocal);
 
