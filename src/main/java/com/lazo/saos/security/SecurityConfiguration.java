@@ -56,7 +56,6 @@ public class SecurityConfiguration {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(AbstractHttpConfigurer::disable)
                 .exceptionHandling(configurer -> configurer.authenticationEntryPoint(unauthorizedHandler))
-                .securityMatcher("/**")
                 .authorizeHttpRequests(registry -> registry
                         .requestMatchers(
                                 "/",
