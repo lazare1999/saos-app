@@ -24,7 +24,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
-    @Value("${secrets.API_KEY}")
+    @Value("${API_KEY}")
     private String apiKey;
 
     private Optional<Authentication> extract(HttpServletRequest request) {
