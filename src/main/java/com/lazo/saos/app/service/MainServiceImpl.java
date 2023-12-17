@@ -19,9 +19,13 @@ public class MainServiceImpl implements MainService {
 
     public Double ortAlgorithmCompute(ArrayList<HashMap<Integer, Boolean>> listX, HashMap<Integer, Double> rValues) {
 
+        double intAns = 1.0;
+
+        if (Objects.equals(listX, null) || Objects.equals(rValues, null))
+            return intAns;
+
         ArrayList<HashMap<Integer, Boolean>> ans = ortAlgorithmY(listX);
 
-        double intAns = 1.0;
         for (var a : ans) {
             double row = 1.0;
             for (var aa : a.entrySet()) {
