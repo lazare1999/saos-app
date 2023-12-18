@@ -16,6 +16,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Optional;
 
+import static com.lazo.saos.security.SecurityConfiguration.APIKEY_NAME;
+
 /**
  * Created by Lazo on 2023-12-16
  */
@@ -28,7 +30,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
     private String apiKey;
 
     private Optional<Authentication> extract(HttpServletRequest request) {
-        var providedKey = request.getHeader("apikey");
+        var providedKey = request.getHeader(APIKEY_NAME);
         if (providedKey == null || !providedKey.equals(apiKey))
             return Optional.empty();
 
