@@ -28,7 +28,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
     private String apiKey;
 
     private Optional<Authentication> extract(HttpServletRequest request) {
-        var providedKey = request.getHeader("ApiKey");
+        var providedKey = request.getHeader("apikey");
         if (providedKey == null || !providedKey.equals(apiKey))
             return Optional.empty();
 

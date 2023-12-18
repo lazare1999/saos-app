@@ -28,7 +28,7 @@ public class SecurityConfiguration {
     private final ApiKeyAuthFilter apiKeyAuthFilter;
     private final UnauthorizedHandler unauthorizedHandler;
 
-    final private static String APIKEY_NAME = "ApiKey";
+    final private static String APIKEY_NAME = "apikey";
 
     @Bean
     public OpenAPI saosCoreAdtAPI() {
