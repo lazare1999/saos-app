@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.lazo.saos.security.SecurityConfiguration.APIKEY_NAME;
@@ -30,11 +32,23 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
     private String apiKey;
 
     private Optional<Authentication> extract(HttpServletRequest request) {
-        var providedKey = request.getHeader(APIKEY_NAME);
-        if (providedKey == null || !providedKey.equals(apiKey))
+
+        var apikeyAsParam = request.getParameterValues(APIKEY_NAME);
+        if (Objects.equals(apikeyAsParam, null) || Objects.equals(apikeyAsParam.length, 0))
             return Optional.empty();
 
-        return Optional.of(new ApiKeyAuth(providedKey, AuthorityUtils.NO_AUTHORITIES));
+
+        var providedKey = Arrays.stream(apikeyAsParam)
+                .filter(pk -> apiKey.equals(pk))
+                .findAny()
+                .orElse(null);
+
+        if (providedKey == null)
+            return Optional.empty();
+
+        var ans = new ApiKeyAuth(providedKey, AuthorityUtils.NO_AUTHORITIES);
+
+        return Optional.of(ans);
     }
 
     @Override

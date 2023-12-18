@@ -44,7 +44,7 @@ public class SecurityConfiguration {
     private SecurityScheme securityScheme() {
         return new io.swagger.v3.oas.models.security.SecurityScheme()
                 .type(io.swagger.v3.oas.models.security.SecurityScheme.Type.APIKEY)
-                .in(io.swagger.v3.oas.models.security.SecurityScheme.In.HEADER).name(APIKEY_NAME);
+                .in(SecurityScheme.In.QUERY).name(APIKEY_NAME);
     }
 
     @Bean
